@@ -253,14 +253,14 @@
               "pr": "Opcional"
             },
             "title": {
-              "en": "Message contains",
-              "es": "Mensaje contiene",
-              "pr": "Mensagem contém"
+              "en": "Message filter",
+              "es": "Filtro de mensaje",
+              "pr": "Filtro de mensagem"
             },
             "description": {
-              "en": "Filter events whose message contains this text.",
-              "es": "Filtra eventos cuyo mensaje contiene este texto.",
-              "pr": "Filtra eventos cuja mensagem contém este texto."
+              "en": "Filter events by source or specific error code.",
+              "es": "Filtra eventos por origen o código de error específico.",
+              "pr": "Filtra eventos por origem ou código de erro específico."
             },
             "help": {
               "en": "The search ignores uppercase and lowercase differences.",
