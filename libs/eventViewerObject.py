@@ -102,11 +102,9 @@ def get_event_logs(
             for event in records:
                 event_time = event.TimeGenerated
 
-                
                 if end_time and event_time > end_time:
                     continue
 
-                
                 if start_time and event_time < start_time:
                     stop_reading = True
                     break
@@ -121,9 +119,11 @@ def get_event_logs(
                 if source_filter and source_filter not in event.SourceName.casefold():
                     continue
 
+                # Construcción robusta del texto de búsqueda combinando Origen y Strings
                 strings = [str(val) for val in (event.StringInserts or [])]
-                message = " ".join(strings)
-                if message_filter and message_filter not in message.casefold():
+                message_text = f"{event.SourceName} {' '.join(strings)}"
+
+                if message_filter and message_filter not in message_text.casefold():
                     continue
 
                 events.append({
@@ -136,7 +136,7 @@ def get_event_logs(
                     "category": event.EventCategory,
                     "user_sid": str(event.Sid) if event.Sid is not None else None,
                     "strings": strings,
-                    "message": message,
+                    "message": " ".join(strings),
                 })
 
                 if len(events) >= max_records:
